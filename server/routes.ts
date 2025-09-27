@@ -86,6 +86,11 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
   // Note: Auth routes are now handled in simpleAuth.ts
 
+app.get("/logo.png", (req, res) => {
+    const logoPath = path.join(process.cwd(), "logo.png");
+    res.sendFile(logoPath);
+  });   
+
   // Project routes
   app.get('/api/projects', isAuthenticated, async (req: any, res) => {
     try {
